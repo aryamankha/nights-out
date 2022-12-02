@@ -1,7 +1,6 @@
 import Card from "./Card";
 
 export default function Section(props) {
-  const gridClass = "grid-rows-" + Math.ceil(props.numEvents / 4);
   return (
     <>
       <div className="w-2/3 mb-5">

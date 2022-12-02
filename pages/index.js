@@ -17,9 +17,9 @@ export default function Home() {
         <p className={styles.description}>
           Always have options on your nights out.
         </p>
-        <Section date="Friday December 2" numEvents="4"></Section>
-        <Section date="Saturday December 3" numEvents="7"></Section>
-        <Section date="Sunday December 4" numEvents="15"></Section>
+        <Section date="Friday December 2"></Section>
+        <Section date="Saturday December 3"></Section>
+        <Section date="Sunday December 4"></Section>
       </main>
 
       <footer className={styles.footer}>
