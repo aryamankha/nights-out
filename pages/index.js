@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Section from "../components/Section";
 
 export default function Home() {
   return (
@@ -12,50 +13,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js</a> +{" "}
-          <a href="https://tailwindcss.com/"> Tailwind CSS </a> +{" "}
-          <a href="https://www.vivid.lol/">Vivid!</a>
-        </h1>
-
+        <h1 className="text-8xl">Nights out in NYC</h1>
         <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
+          Always have options on your nights out.
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Next Docs &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a
-            href="https://tailwindcss.com/docs/installation"
-            className={styles.card}
-          >
-            <h2>Tailwind Docs &rarr;</h2>
-            <p>
-              Find in-depth information about Tailwind CSS and utility classes{" "}
-            </p>
-          </a>
-
-          <a href="https://docs.vivid.lol/" className={styles.card}>
-            <h2>Vivid Docs &rarr;</h2>
-            <p>
-              Find in-depth information about Vivid and in-browser styling.{" "}
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Section date="Friday December 2" numEvents="4"></Section>
+        <Section date="Saturday December 3" numEvents="7"></Section>
+        <Section date="Sunday December 4" numEvents="15"></Section>
       </main>
 
       <footer className={styles.footer}>
