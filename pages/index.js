@@ -1,9 +1,39 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Section from "../components/Section";
+import EventGrid from "../components/EventGrid";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [dateSplitEvents, setDateSplitEvents] = useState({});
+
+  useEffect(() => {
+    getAllEvents();
+  }, []);
+
+  const getAllEvents = async () => {
+    axios.get("/api/events").then((response) => {
+      const allEvents = response.data.events;
+      const tempDateSplitEvents = {};
+      allEvents.map((event) => {
+        // if date does not already have events tied to it, create a new key-val pair with the new event as the single element in the list
+        if (!(event.date in tempDateSplitEvents)) {
+          tempDateSplitEvents[event.date] = [
+            { venue: event.venue, link: event.link },
+          ];
+          // otherwise, just add another event to that date
+        } else {
+          tempDateSplitEvents[event.date].push({
+            venue: event.venue,
+            link: event.link,
+          });
+        }
+      });
+      setDateSplitEvents(tempDateSplitEvents);
+    });
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,13 +43,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className="text-8xl">Nights out in NYC</h1>
-        <p className={styles.description}>
+        <h1 className="text-8xl text-center">Nights out in NYC</h1>
+        <p className="text-center my-6">
           Always have options on your nights out.
         </p>
-        <Section date="Friday December 2"></Section>
-        <Section date="Saturday December 3"></Section>
-        <Section date="Sunday December 4"></Section>
+        <EventGrid events={dateSplitEvents}></EventGrid>
       </main>
 
       <footer className={styles.footer}>
