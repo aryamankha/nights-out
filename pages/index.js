@@ -20,13 +20,20 @@ export default function Home() {
         // if date does not already have events tied to it, create a new key-val pair with the new event as the single element in the list
         if (!(event.date in tempDateSplitEvents)) {
           tempDateSplitEvents[event.date] = [
-            { venue: event.venue, link: event.link },
+            {
+              venue: event.venue,
+              link: event.link,
+              description: event.description,
+              image: event.image,
+            },
           ];
           // otherwise, just add another event to that date
         } else {
           tempDateSplitEvents[event.date].push({
             venue: event.venue,
             link: event.link,
+            description: event.description,
+            image: event.image,
           });
         }
       });
@@ -43,7 +50,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className="text-8xl text-center">Nights out in NYC</h1>
+        <h1 className="text-8xl text-center bg-gradient-to-r bg-clip-text text-transparent font-bold from-pink-500 to-blue-500">Nights out in NYC</h1>
         <p className="text-center my-6">
           Always have options on your nights out.
         </p>
