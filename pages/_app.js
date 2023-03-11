@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { NextSeo } from "next-seo";
 
 if (
   typeof window !== "undefined" &&
@@ -10,7 +11,30 @@ if (
 }
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  const siteTitle = "NYC Nights Out";
+  const siteDescription = "Check out the hottest places to go out in the city";
+  return (
+    <>
+      <NextSeo
+        title={siteTitle}
+        description={siteDescription}
+        themeColor={isDarkMode ? "#18181b" : "#fafafa"}
+        openGraph={{
+          title: siteTitle,
+          description: siteDescription,
+          images: [
+            {
+              url: "https://clubbookers.com/wp-content/uploads/2022/11/Club-Space.jpg",
+              width: 800,
+              height: 600,
+              alt: "Nights out NYC",
+            },
+          ],
+        }}
+      />
+      <Component {...pageProps} />;
+    </>
+  );
 }
 
 export default MyApp;
