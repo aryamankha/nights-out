@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }) {
       <NextSeo
         title={siteTitle}
         description={siteDescription}
-        themeColor={isDarkMode ? "#18181b" : "#fafafa"}
         openGraph={{
           title: siteTitle,
           description: siteDescription,
